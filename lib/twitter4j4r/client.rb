@@ -3,6 +3,7 @@ require 'jar/twitter4j-stream-2.2.6.jar'
 require 'jar/twitter4j-async-2.2.6.jar'
 
 require 'twitter4j4r/listener'
+require 'twitter4j4r/user_stream_listener'
 
 module Twitter4j4r
   class Client
@@ -29,10 +30,20 @@ module Twitter4j4r
       on_status(&block)
       start(terms)
     end
+
+    def direct_messages(&block)
+      @dm_block = block
+      self
+    end
     
     def start(search_terms)
       @stream.addListener(Listener.new(self, @status_block, @exception_block, @limitation_block))
       @stream.filter(Java::Twitter4j::FilterQuery.new(0, nil, search_terms.to_java(:string)))
+    end
+
+    def userstream
+      @stream.addListener(UserStreamListener.new(self, @dm_block, @exception_block))
+      @stream.user()
     end
 
     def stop
