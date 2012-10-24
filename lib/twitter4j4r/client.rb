@@ -60,8 +60,8 @@ module Twitter4j4r
       config.setOAuthConsumerSecret(auth_map[:consumer_secret])
       config.setOAuthAccessToken(auth_map[:access_token])
       config.setOAuthAccessTokenSecret(auth_map[:access_secret])
+      config.setIncludeEntitiesEnabled(true)
       config.build
     end
-
   end
 end
