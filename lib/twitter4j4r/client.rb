@@ -43,7 +43,7 @@ module Twitter4j4r
 
     def userstream
       @stream.addListener(UserStreamListener.new(self, @dm_block, @exception_block))
-      @stream.user()
+      @stream.user
     end
 
     def stop

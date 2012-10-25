@@ -10,8 +10,8 @@ module Twitter4j4r
       @exception_block = exception_block
     end
 
-    def onException(message)
-      call_block_with_client(@exception_block, message)
+    def onException(exception)
+      call_block_with_client(@exception_block, exception)
     end
 
     def onDirectMessage(message)
