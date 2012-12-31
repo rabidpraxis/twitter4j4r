@@ -1,6 +1,6 @@
 module Twitter4j4r
-  class UserStreamListener
-    include Java::Twitter4j::UserStreamListener
+  class SiteStreamsListener
+    include Java::Twitter4j::SiteStreamsListener
 
     def initialize(client, blocks)
       @client = client
@@ -23,7 +23,8 @@ module Twitter4j4r
      [ :onUserListSubscription,    :user_list_subscription ],
      [ :onUserListUnsubscription,  :user_list_unsubscription ],
      [ :onUserListUpdate,          :user_list_update ],
-     [ :onUserProfileUpdate,       :user_profile_update ]
+     [ :onUserProfileUpdate,       :user_profile_update ],
+     [ :onDisconnectionNotice,     :stream_disconnect ]
     ].each do |method|
       define_method(method[0]) do |*args|
         call_block_with_client(method[1], *args)
