@@ -13,6 +13,7 @@ module Twitter4j4r
      [ :onDirectMessage,           :dm ],
      [ :onFriendList,              :friend_list ],
      [ :onFavorite,                :favorite ],
+     [ :onStatus,                  :status ],
      [ :onFollow,                  :follow ],
      [ :onUnblock,                 :unblock ],
      [ :onUnfavorite,              :unfavorite ],
